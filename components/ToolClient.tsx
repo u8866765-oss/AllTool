@@ -84,47 +84,71 @@ export default function ToolClient({ tool }: { tool: Tool }) {
     if (!file) throw new Error("Please select an image first.");
 
     const img = await loadImage(file);
-    const isThumbnail = tool.slug === "youtube-thumbnail-resizer";
-    const w = Math.max(1, Math.min(5000, isThumbnail ? 1280 : width));
-    const h = Math.max(1, Math.min(5000, isThumbnail ? 720 : height));
+    const slug = tool.slug;
+
+    const isThumbnail = slug === "youtube-thumbnail-resizer";
+    const isCrop = slug === "image-cropper" || isThumbnail;
+    const isResize = slug === "image-resizer";
+
+    // Compression and format conversion preserve original dimensions.
+    const w = isThumbnail ? 1280 :
+      isResize || slug === "image-cropper"
+        ? Math.max(1, Math.min(5000, width))
+        : img.naturalWidth;
+
+    const h = isThumbnail ? 720 :
+      isResize || slug === "image-cropper"
+        ? Math.max(1, Math.min(5000, height))
+        : img.naturalHeight;
+
+    if (w * h > 25000000) {
+      throw new Error("Image is too large. Choose dimensions below 25 megapixels.");
+    }
+
     const canvas = document.createElement("canvas");
     canvas.width = w;
     canvas.height = h;
+
     const ctx = canvas.getContext("2d");
     if (!ctx) throw new Error("Canvas is not supported.");
 
-    const isCrop = tool.slug === "image-cropper";
-    if (tool.slug === "png-to-jpg" || tool.slug === "image-compressor") {
+    const mime =
+      slug === "jpg-to-png" ? "image/png" :
+      slug === "png-to-jpg" || slug === "image-compressor"
+        ? "image/jpeg"
+        : file.type === "image/png" ? "image/png" : "image/jpeg";
+
+    if (mime === "image/jpeg") {
       ctx.fillStyle = "#ffffff";
       ctx.fillRect(0, 0, w, h);
     }
 
     if (isCrop) {
-      const scale = Math.max(w / img.width, h / img.height);
+      // Center-crop to the requested aspect ratio.
+      const scale = Math.max(w / img.naturalWidth, h / img.naturalHeight);
       const sw = w / scale;
       const sh = h / scale;
-      ctx.drawImage(img, (img.width - sw) / 2, (img.height - sh) / 2,
-        sw, sh, 0, 0, w, h);
+      const sx = (img.naturalWidth - sw) / 2;
+      const sy = (img.naturalHeight - sh) / 2;
+
+      ctx.drawImage(img, sx, sy, sw, sh, 0, 0, w, h);
     } else {
       ctx.drawImage(img, 0, 0, w, h);
     }
 
-    const mime = tool.slug === "jpg-to-png"
-      ? "image/png"
-      : tool.slug === "png-to-jpg" || tool.slug === "image-compressor"
-        ? "image/jpeg"
-        : file.type === "image/png" ? "image/png" : "image/jpeg";
-
     const blob = await new Promise<Blob>((resolve, reject) => {
-      canvas.toBlob(
-        b => b ? resolve(b) : reject(new Error("Image export failed.")),
+      ctx.canvas.toBlob(
+        (b) => b
+          ? resolve(b)
+          : reject(new Error("Image export failed. Try another image.")),
         mime,
-        quality
+        mime === "image/jpeg" ? quality : undefined
       );
     });
 
     const ext = mime === "image/png" ? "png" : "jpg";
-    download(blob, `toolnova-${tool.slug}.${ext}`);
+    download(blob, `toolnova-${slug}.${ext}`);
+
     setResult(
       `Success! ${w} × ${h}px · ${(blob.size / 1024).toFixed(1)} KB · ${ext.toUpperCase()}`
     );
