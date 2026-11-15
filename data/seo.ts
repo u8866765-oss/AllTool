@@ -184,36 +184,36 @@ export const toolSEO: Record<string, ToolSEO> = {
     ]
   },
   "pdf-merger": {
-    title: "Merge PDF Files Online – Free PDF Merger | ToolNova",
-    description: "Learn about combining PDF documents with ToolNova. PDF merging functionality depends on the available PDF engine.",
-    intro: "This page describes a PDF merger, but the current project source indicates that its PDF engine is still to be added. Do not rely on it for merging until the feature is implemented and tested.",
-    steps: ["Open the PDF merger page.", "Check whether PDF file selection and merging are enabled.", "If the feature is not available, use a trusted PDF editor instead.", "Verify the merged document before sharing."],
+    title: "Merge PDF Files Online Free – Combine PDF Documents | ToolNova",
+    description: "Combine multiple PDF files into one document with ToolNova's free browser-based PDF merger.",
+    intro: "Combine several PDF documents into a single file. Select your PDFs, arrange them in the order you want, and create one merged document.",
+    steps: ["Select two or more PDF files.", "Arrange the files in your preferred order if the tool allows it.", "Start merging the selected PDFs.", "Download and open the merged PDF to verify its pages."],
     faqs: [
-      { question: "Can this page currently merge PDFs?", answer: "The project source currently marks the PDF engine as not yet added. The feature must be implemented and tested first." },
-      { question: "Is PDF merging available offline?", answer: "Offline behavior cannot be confirmed until the PDF engine is implemented." },
-      { question: "Should I upload sensitive PDFs to unknown sites?", answer: "Avoid uploading sensitive documents to services you do not trust." }
+      { question: "Can I merge multiple PDF files?", answer: "Yes. Select the PDF files you want to combine and run the merge operation." },
+      { question: "Can I change the order of PDF files?", answer: "Check the selected file order before merging so the final document follows your intended sequence." },
+      { question: "Are my PDF files uploaded to a server?", answer: "The PDF processing implementation runs in the browser. Avoid using shared or untrusted devices for confidential documents." }
     ]
   },
   "pdf-splitter": {
-    title: "Split PDF Files Online – PDF Splitter | ToolNova",
-    description: "Explore PDF page extraction with ToolNova. PDF splitting functionality depends on the PDF engine being implemented.",
-    intro: "This page is intended for extracting pages from PDF files. The current project source says the PDF engine is still to be added, so splitting is not yet confirmed as functional.",
-    steps: ["Open the PDF splitter page.", "Check whether PDF selection and page extraction are enabled.", "If unavailable, use a trusted PDF editor.", "Open the output file to verify the extracted pages."],
+    title: "Split PDF Online Free – Extract PDF Pages | ToolNova",
+    description: "Extract selected pages from PDF files with ToolNova's free browser-based PDF splitter.",
+    intro: "Create a separate PDF from selected pages of an existing document. Enter the page numbers or ranges supported by the tool and review the output.",
+    steps: ["Choose a PDF file.", "Enter the page numbers or ranges you want to extract.", "Run the split operation.", "Download and open the new PDF to check the extracted pages."],
     faqs: [
-      { question: "Can I split a PDF with this tool now?", answer: "The current source marks the PDF engine as not yet added. The feature needs implementation and testing." },
-      { question: "Can I extract selected pages?", answer: "That is the intended function, but availability depends on the PDF engine implementation." },
-      { question: "How do I verify the result?", answer: "Open the output PDF and check its pages." }
+      { question: "Can I extract specific PDF pages?", answer: "Yes. Enter the page numbers or ranges supported by the splitter." },
+      { question: "Can I extract more than one page?", answer: "Yes. You can specify multiple pages or ranges using the supported input format." },
+      { question: "Should I check the output PDF?", answer: "Yes. Open the downloaded file and confirm that it contains the pages you selected." }
     ]
   },
   "jpg-to-pdf": {
-    title: "JPG to PDF Converter – Convert Images to PDF | ToolNova",
-    description: "Explore JPG to PDF conversion with ToolNova. Image-to-PDF functionality depends on the PDF engine implementation.",
-    intro: "This tool is intended to turn image files into PDF documents. The current project source indicates that the PDF engine is still to be added.",
-    steps: ["Open the JPG to PDF page.", "Check whether image selection and PDF creation are enabled.", "If unavailable, use a trusted image-to-PDF application.", "Verify the generated PDF before sharing."],
+    title: "JPG to PDF Converter Online Free – Convert Images to PDF | ToolNova",
+    description: "Convert JPG images into a PDF document with ToolNova's free browser-based JPG to PDF converter.",
+    intro: "Turn image files into a PDF document. Select your images, create the PDF, and check the downloaded file before sharing or printing.",
+    steps: ["Select the JPG or supported image files.", "Start the image-to-PDF conversion.", "Wait for the PDF document to be created.", "Download and open the PDF to verify the result."],
     faqs: [
-      { question: "Can I convert JPG to PDF here now?", answer: "The current source marks the PDF engine as not yet added, so this feature is not confirmed as functional." },
-      { question: "Can multiple images be combined?", answer: "That depends on the final PDF implementation and should be tested." },
-      { question: "Is the tool free?", answer: "The project is intended to provide free tools, but this feature needs implementation." }
+      { question: "Can I convert JPG images to PDF?", answer: "Yes. Select your JPG images and use the conversion tool to create a PDF." },
+      { question: "Can I put multiple images in one PDF?", answer: "The tool supports image-to-PDF creation; check the selected images and output pages after conversion." },
+      { question: "How can I verify the PDF?", answer: "Open the downloaded PDF and check that the images appear correctly." }
     ]
   },
   "youtube-thumbnail-resizer": {

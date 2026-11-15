@@ -16,9 +16,9 @@ export const tools:Tool[]=[
 ["percentage-calculator","Percentage Calculator","Calculate percentages quickly and easily.","Calculator Tools","％","calc","percentage calculator"],
 ["discount-calculator","Discount Calculator","Calculate sale price and savings after a discount.","Calculator Tools","🏷️","calc","discount calculator"],
 ["bmi-calculator","BMI Calculator","Estimate body mass index from height and weight.","Calculator Tools","⚖️","calc","bmi calculator"],
-["pdf-merger","PDF Merger","Combine multiple PDF files. PDF engine to be added.","PDF Tools","📚","pdf","merge pdf online"],
-["pdf-splitter","PDF Splitter","Extract selected pages. PDF engine to be added.","PDF Tools","📄","pdf","split pdf online"],
-["jpg-to-pdf","JPG to PDF","Turn image files into a PDF. PDF engine to be added.","PDF Tools","🧾","pdf","jpg to pdf converter"],
+["pdf-merger","PDF Merger","Combine multiple PDF files into one document directly in your browser.","PDF Tools","📚","pdf","merge pdf online"],
+["pdf-splitter","PDF Splitter","Extract selected pages from a PDF and save them as a new document.","PDF Tools","📄","pdf","split pdf online"],
+["jpg-to-pdf","JPG to PDF","Convert JPG and image files into a downloadable PDF document.","PDF Tools","🧾","pdf","jpg to pdf converter"],
 ["youtube-thumbnail-resizer","YouTube Thumbnail Resizer","Resize an image to a 1280 × 720 thumbnail canvas.","Creator Tools","▶️","image","youtube thumbnail resizer"]
 ].map(([slug,name,description,category,icon,kind,keywords])=>({slug,name,description,category,icon,kind,keywords})) as Tool[];
 export const categories=[{name:"Image Tools",icon:"🖼️",desc:"Compress, resize and convert images"},{name:"PDF Tools",icon:"📑",desc:"Merge, split and convert PDF files"},{name:"Generator Tools",icon:"⚡",desc:"Create QR codes, passwords and IDs"},{name:"Text Tools",icon:"✍️",desc:"Count, clean and transform text"},{name:"Calculator Tools",icon:"🧮",desc:"Quick everyday calculations"},{name:"Creator Tools",icon:"🎬",desc:"Useful tools for online creators"}];
