@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import SiteShell from "@/components/SiteShell";
+import AdsterraDisplayAds from "@/components/ads/AdsterraDisplayAds";
 import { tools, categories } from "@/data/tools";
 
 const featuredSlugs = [
@@ -127,9 +128,7 @@ export default function Home() {
         </section>
 
         <div className="wrap">
-          <div className="adslot">
-            ADVERTISEMENT · RESPONSIVE DISPLAY SLOT
-          </div>
+          <AdsterraDisplayAds />
 
           <section className="v2-section">
             <div className="v2-heading">
@@ -286,9 +285,7 @@ export default function Home() {
             </Link>
           </section>
 
-          <div className="adslot">
-            ADVERTISEMENT · RESPONSIVE DISPLAY SLOT
-          </div>
+
         </div>
       </main>
     </SiteShell>

@@ -1,6 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import SiteShell from "@/components/SiteShell";
+import AdsterraDisplayAds from "@/components/ads/AdsterraDisplayAds";
 import ToolClient from "@/components/ToolClient";
 import { tools } from "@/data/tools";
 import { toolSEO } from "@/data/seo";
@@ -138,9 +139,7 @@ export default function Page({
           }}
         />
 
-        <div className="adslot">
-          ADVERTISEMENT · RESPONSIVE DISPLAY SLOT
-        </div>
+        <AdsterraDisplayAds />
 
         <div className="tool-layout">
           <section>
@@ -183,7 +182,7 @@ export default function Page({
               </p>
             ))}
 
-            <div className="adslot">ADVERTISEMENT</div>
+
           </aside>
         </div>
       </main>
