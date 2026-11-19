@@ -3,6 +3,9 @@ import "./globals.css";
 import AdsterraGlobal from "@/components/ads/AdsterraGlobal";
 
 export const metadata: Metadata = {
+  other: {
+    monetag: "e60d82631f7362ec5986d6e210dbecf3",
+  },
   title: "ToolNova – Free Online Tools",
   description:
     "Fast, simple and free online tools to compress images, convert files, create QR codes and simplify everyday digital tasks.",
