@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import AdsterraGlobal from "@/components/ads/AdsterraGlobal";
+import MonetagGlobal from "@/components/ads/MonetagGlobal";
 
 export const metadata: Metadata = {
   other: {
@@ -28,6 +29,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body>
         <AdsterraGlobal />
+          <MonetagGlobal />
         {children}
       </body>
     </html>
