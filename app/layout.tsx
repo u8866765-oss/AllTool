@@ -33,11 +33,12 @@ export default function RootLayout({
       <body>
         {/* Google AdSense */}
         <Script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6363719115069230"
-          crossOrigin="anonymous"
-          strategy="afterInteractive"
-        />
+  id="google-adsense"
+  async
+  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6363719115069230"
+  crossOrigin="anonymous"
+  strategy="beforeInteractive"
+/>
 
         {/* Existing Ad Networks */}
         <AdsterraGlobal />
