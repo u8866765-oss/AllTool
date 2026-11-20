@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import AdsterraGlobal from "@/components/ads/AdsterraGlobal";
 import MonetagGlobal from "@/components/ads/MonetagGlobal";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   other: {
@@ -28,8 +29,19 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body>
+        {/* Google AdSense */}
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6363719115069230"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+
+        {/* Existing Ads */}
         <AdsterraGlobal />
-          <MonetagGlobal />
+        <MonetagGlobal />
+
+        {/* Website Content */}
         {children}
       </body>
     </html>
