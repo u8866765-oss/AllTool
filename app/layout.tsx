@@ -5,17 +5,19 @@ import MonetagGlobal from "@/components/ads/MonetagGlobal";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  other: {
-    monetag: "e60d82631f7362ec5986d6e210dbecf3",
-  },
-  title: "ToolNova – Free Online Tools",
+  title: "ToolNova - Free Online Tools",
   description:
-    "Fast, simple and free online tools to compress images, convert files, create QR codes and simplify everyday digital tasks.",
+    "Fast, simple and free online tools to compress images, convert files, create QR codes and simplify everyday tasks.",
   metadataBase: new URL("https://toolnova-global.pages.dev"),
-  alternates: { canonical: "/" },
-  robots: { index: true, follow: true },
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
-    title: "ToolNova – Free Online Tools",
+    title: "ToolNova - Free Online Tools",
     description: "All the tools you need. One simple place.",
     type: "website",
   },
@@ -37,7 +39,7 @@ export default function RootLayout({
           strategy="afterInteractive"
         />
 
-        {/* Existing Ads */}
+        {/* Existing Ad Networks */}
         <AdsterraGlobal />
         <MonetagGlobal />
 
