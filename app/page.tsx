@@ -1,10 +1,44 @@
+
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import SiteShell from "@/components/SiteShell";
 import AdsterraDisplayAds from "@/components/ads/AdsterraDisplayAds";
 import { tools, categories } from "@/data/tools";
+
+/* Google AdSense */
+declare global {
+  interface Window {
+    adsbygoogle: unknown[];
+  }
+}
+
+function GoogleAd() {
+  useEffect(() => {
+    try {
+      (window.adsbygoogle = window.adsbygoogle || []).push({});
+    } catch (error) {
+      console.error("AdSense error:", error);
+    }
+  }, []);
+
+  return (
+    <div className="my-8 w-full overflow-hidden text-center">
+      <ins
+        className="adsbygoogle"
+        style={{
+          display: "block",
+          minHeight: "100px",
+        }}
+        data-ad-client="ca-pub-6363719115069230"
+        data-ad-slot="6145747034"
+        data-ad-format="auto"
+        data-full-width-responsive="true"
+      />
+    </div>
+  );
+}
 
 const featuredSlugs = [
   "image-compressor",
@@ -29,7 +63,9 @@ export default function Home() {
         tool.category +
         " " +
         tool.keywords
-      ).toLowerCase().includes(query.toLowerCase());
+      )
+        .toLowerCase()
+        .includes(query.toLowerCase());
 
       const matchesCategory =
         activeCategory === "All" ||
@@ -46,6 +82,7 @@ export default function Home() {
   return (
     <SiteShell>
       <main className="v2-home">
+        {/* HERO SECTION */}
         <section className="v2-hero">
           <div className="wrap v2-hero-inner">
             <div className="v2-eyebrow">
@@ -115,10 +152,12 @@ export default function Home() {
                 <strong>{tools.length}+</strong>
                 <span>Useful Tools</span>
               </div>
+
               <div>
                 <strong>{categories.length}</strong>
                 <span>Categories</span>
               </div>
+
               <div>
                 <strong>Free</strong>
                 <span>To Get Started</span>
@@ -128,15 +167,24 @@ export default function Home() {
         </section>
 
         <div className="wrap">
+
+          {/* AD 1 - HERO SECTION ER NICHE */}
+          <GoogleAd />
+
+          {/* EXISTING AD NETWORK */}
           <AdsterraDisplayAds />
 
+          {/* POPULAR TOOLS */}
           <section className="v2-section">
             <div className="v2-heading">
               <div>
                 <span className="v2-kicker">HANDPICKED FOR YOU</span>
                 <h2>Popular tools</h2>
-                <p>Get started with some of our most useful tools.</p>
+                <p>
+                  Get started with some of our most useful tools.
+                </p>
               </div>
+
               <Link href="/#v2-tools" className="v2-text-link">
                 Explore all tools ↗
               </Link>
@@ -155,14 +203,22 @@ export default function Home() {
                       0{index + 1}
                     </span>
                   </div>
+
                   <h3>{tool.name}</h3>
                   <p>{tool.description}</p>
-                  <span className="v2-open">Open tool <span>↗</span></span>
+
+                  <span className="v2-open">
+                    Open tool <span>↗</span>
+                  </span>
                 </Link>
               ))}
             </div>
           </section>
 
+          {/* AD 2 - POPULAR TOOLS ER NICHE */}
+          <GoogleAd />
+
+          {/* CATEGORIES */}
           <section className="v2-section" id="categories">
             <div className="v2-heading">
               <div>
@@ -191,12 +247,18 @@ export default function Home() {
                       });
                     }}
                   >
-                    <span className="v2-category-icon">{category.icon}</span>
+                    <span className="v2-category-icon">
+                      {category.icon}
+                    </span>
+
                     <span className="v2-category-info">
                       <strong>{category.name}</strong>
                       <small>{category.desc}</small>
-                      <small className="v2-count">{count} tools ↗</small>
+                      <small className="v2-count">
+                        {count} tools ↗
+                      </small>
                     </span>
+
                     <span className="v2-category-arrow">→</span>
                   </button>
                 );
@@ -204,15 +266,18 @@ export default function Home() {
             </div>
           </section>
 
+          {/* ALL TOOLS */}
           <section className="v2-section" id="v2-tools">
             <div className="v2-heading">
               <div>
                 <span className="v2-kicker">THE TOOL COLLECTION</span>
+
                 <h2>
                   {activeCategory === "All"
                     ? "All online tools"
                     : activeCategory}
                 </h2>
+
                 <p>
                   {filteredTools.length} tools available. Choose one and
                   get things done.
@@ -220,22 +285,25 @@ export default function Home() {
               </div>
             </div>
 
+            {/* CATEGORY FILTER */}
             <div className="v2-filter-row">
-              {["All", ...categories.map((category) => category.name)].map(
-                (category) => (
-                  <button
-                    key={category}
-                    onClick={() => setActiveCategory(category)}
-                    className={`v2-filter ${
-                      activeCategory === category ? "selected" : ""
-                    }`}
-                  >
-                    {category === "All" ? "✦ All tools" : category}
-                  </button>
-                )
-              )}
+              {[
+                "All",
+                ...categories.map((category) => category.name),
+              ].map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setActiveCategory(category)}
+                  className={`v2-filter ${
+                    activeCategory === category ? "selected" : ""
+                  }`}
+                >
+                  {category === "All" ? "✦ All tools" : category}
+                </button>
+              ))}
             </div>
 
+            {/* TOOLS GRID */}
             <div className="v2-tools-grid">
               {filteredTools.map((tool) => (
                 <Link
@@ -247,18 +315,26 @@ export default function Home() {
                     <span className="v2-tool-icon">{tool.icon}</span>
                     <span className="v2-tool-arrow">↗</span>
                   </div>
+
                   <h3>{tool.name}</h3>
                   <p>{tool.description}</p>
-                  <span className="v2-tool-category">{tool.category}</span>
+
+                  <span className="v2-tool-category">
+                    {tool.category}
+                  </span>
                 </Link>
               ))}
             </div>
 
+            {/* EMPTY SEARCH RESULT */}
             {filteredTools.length === 0 && (
               <div className="v2-empty">
                 <span>🔎</span>
                 <h3>No tools found</h3>
-                <p>Try another search or select a different category.</p>
+                <p>
+                  Try another search or select a different category.
+                </p>
+
                 <button
                   onClick={() => {
                     setQuery("");
@@ -271,6 +347,10 @@ export default function Home() {
             )}
           </section>
 
+          {/* AD 3 - ALL TOOLS ER NICHE */}
+          <GoogleAd />
+
+          {/* BOTTOM BANNER */}
           <section className="v2-bottom-banner">
             <div>
               <span className="v2-kicker">SIMPLE. FAST. USEFUL.</span>
@@ -280,11 +360,11 @@ export default function Home() {
                 No complicated setup.
               </p>
             </div>
+
             <Link href="/#v2-tools" className="v2-banner-btn">
               Explore tools ↗
             </Link>
           </section>
-
 
         </div>
       </main>
