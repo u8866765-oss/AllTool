@@ -7,19 +7,25 @@ import Script from "next/script";
 export const metadata: Metadata = {
   title: "ToolNova - Free Online Tools",
   description:
-    "Fast, simple and free online tools to compress images, convert files, create QR codes and simplify everyday tasks.",
+    "Fast, simple and free online tools to compress images, convert files, create QR codes and more.",
   metadataBase: new URL("https://toolnova-global.pages.dev"),
   alternates: {
     canonical: "/",
   },
+
   robots: {
     index: true,
     follow: true,
   },
+
   openGraph: {
     title: "ToolNova - Free Online Tools",
     description: "All the tools you need. One simple place.",
     type: "website",
+  },
+
+  other: {
+    "google-adsense-account": "ca-pub-6363719115069230",
   },
 };
 
@@ -33,12 +39,12 @@ export default function RootLayout({
       <body>
         {/* Google AdSense */}
         <Script
-  id="google-adsense"
-  async
-  src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6363719115069230"
-  crossOrigin="anonymous"
-  strategy="beforeInteractive"
-/>
+          id="google-adsense"
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6363719115069230"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
 
         {/* Existing Ad Networks */}
         <AdsterraGlobal />
